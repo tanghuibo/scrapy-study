@@ -1,16 +1,14 @@
 # pyhton爬虫框架scrapy学习
 
-
-
 ## scrapy
 
 ### 安装
 
 ```bash
-pip3 install scrapy
+pip3 install scrap
 ```
 
-### scrapy命令简介
+scrapy命令简介
 
 | 名称         | 说明                                                         | 例子                                                |
 | ------------ | ------------------------------------------------------------ | --------------------------------------------------- |
@@ -176,7 +174,7 @@ class ScrapyStudyDownloaderMiddleware(object):
     def process_request(self, request, spider):
         request.headers["cookie"] = self.cookie_text
 ```
-cookie cookie.txt中读取
+cookie从 `cookie.txt`中读取，目前需要用户手动输入
 
 修改`settings.py`
 
@@ -189,6 +187,13 @@ DOWNLOADER_MIDDLEWARES = {
 }
 ```
 
-## 现存问题...
+#### 运行爬虫
 
-网站的cookie时通过动态生产的，相同cookie貌似只能发送5~6条请求
+```bash
+scrapy crawl zhipin
+```
+运行结果见: `result.csv`
+
+### 现存问题
+
+网站的cookie是动态生成的，相同cookie只能发送5~6条请求
